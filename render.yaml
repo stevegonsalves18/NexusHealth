@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: aio-health-backend
+    plan: free # Explicitly request Free Tier
+    region: singapore # Southeast Asia
+    autoDeploy: false
+    healthCheckPath: /healthz
+    buildFilter:
+      paths:
+        - backend/**
+        - requirements.txt
+        - render.yaml
+        - scripts/generate_placeholder_models.py
+      ignoredPaths:
+        - frontend/**
+        - docs/**
+        - Notebooks/**
+        - legacy/**
+        - .github/**
+        - README.md
+    env: python
+    buildCommand: pip install --upgrade pip && pip install --no-cache-dir -r backend/requirements.txt && python scripts/generate_placeholder_models.py
+    startCommand: python scripts/render_start.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8 # Align with Render's stable Python 3.12 runtime and dependency wheels
+      - key: GOOGLE_API_KEY
+        sync: false # User must enter this in dashboard
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: aio-health-backend.onrender.com,aio-health-backend-gdzi.onrender.com,127.0.0.1,localhost,*,aio-health-backend
+      - key: CORS_ORIGINS
+        value: https://NexusHealth.streamlit.app,http://127.0.0.1:3000
+      - key: DATABASE_URL
+        value: sqlite:///healthcare.db

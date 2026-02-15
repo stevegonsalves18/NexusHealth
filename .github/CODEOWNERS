@@ -1,0 +1,24 @@
+# CODEOWNERS — Auto-assign reviewers on PRs
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: everything
+* @stevegonsalves18
+
+# Backend — API, AI, ML
+/backend/ @stevegonsalves18
+
+# Frontend — React/Vite UI
+/frontend/ @stevegonsalves18
+
+# Infrastructure — CI/CD, Docker, Terraform
+/.github/ @stevegonsalves18
+/terraform/ @stevegonsalves18
+/Dockerfile* @stevegonsalves18
+/docker-compose* @stevegonsalves18
+
+# Tests
+/tests/ @stevegonsalves18
+
+# Documentation
+/docs/ @stevegonsalves18
+*.md @stevegonsalves18
