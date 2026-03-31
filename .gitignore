@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Database
+*.db
+*.sqlite3
+
+# Models
+*.pkl
+!backend/*.pkl
+!backend/*.onnx
+
+# Logs
+*.log
