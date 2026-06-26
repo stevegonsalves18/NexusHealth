@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Host & Sitemap
+Sitemap: https://github.com/stevegonsalves18/NexusHealth/sitemap.xml
